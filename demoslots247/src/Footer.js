@@ -1,9 +1,10 @@
 import React,{Component} from 'react'
+import '../src/App.css'
 export default class Navigation extends Component{
     render(){
     return(
         <div className='footer'>
-            <span>copyright @2022</span>
+            <p>copyright @2022</p>
         </div>
     )
     }}
