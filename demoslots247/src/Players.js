@@ -1,62 +1,35 @@
-import React,{Component} from "react";
-export default class player extends Component{
-    render(){
-        return(
-            <div className='container'>
-                <div className='column'>
-                    <div className='card'>
-                        <img src='assets/images/cr.jpg'/>
-                        <h3>Cristiano Ronaldo</h3>
-                        <p className='title'>Manchester United</p>
-                        <p><button>Detail</button></p>
-                    </div>
-                </div>
-                
-                <div className='column'>
-                    <div className='card'>
-                        <img src='assets/images/kante.jpg'/>
-                        <h3>Kante</h3>
-                        <p className='title'>Chelsa</p>
-                        <p><button>Detail</button></p>
-                    </div>
-                </div>
+import React, { Component, useState } from "react";
+import { Players } from "../src/shared/ListOfPlayers";
 
-                <div className='column'>
-                    <div className='card'>
-                        <img src='assets/images/messi.jpg'/>
-                        <h3>Messi</h3>
-                        <p className='title'>PSG</p>
-                        <p><button>Detail</button></p>
-                    </div>
-                </div>
+export default function Players() {
+    const [player, setPlayer] = useState({});
 
-                <div className='column'>
-                    <div className='card'>
-                        <img src='assets/images/neymar.jpg'/>
-                        <h3>Neymar</h3>
-                        <p className='title'>PSG</p>
-                        <p><button>Detail</button></p>
-                    </div>
-                </div>
-
-                <div className='column'>
-                    <div className='card'>
-                        <img src='assets/images/kane.jpg'/>
-                        <h3>Kane</h3>
-                        <p className='title'>Tottemham</p>
-                        <p><button>Detail</button></p>
-                    </div>
-                </div>
-
-                <div className='column'>
-                    <div className='card'>
-                        <img src='assets/images/haaland.jpg'/>
-                        <h3>Haaland</h3>
-                        <p className='title'>Manchester City</p>
-                        <p><button>Detail</button></p>
-                    </div>
-                </div>
-            </div>
-        )
-    }
+  return (
+    <div className='container'>
+      {Players.map((player) => (
+        <div className='column' key={player.id}>
+          <div className='card'>
+            <img src={player.img} alt={player.name} />
+            <h3>{player.name}</h3>
+            <p className="title">{player.club}</p>
+            <p>
+            <button onClick={() => setPlayer(player)}>
+<a href='#popup1' id='openPopUp'>Detail</a>
+</button>
+            </p>
+          </div>
+        </div>
+      ))}
+      <div id="popup1" className="overlay">
+        <div className="popup">
+        <img src={player.img} />
+          <h2>{player.name}</h2>
+          <a className="close" href="#">
+            &time;
+          </a>
+          <div className="content">{player.info}</div>
+        </div>
+      </div>
+    </div>
+  );
 }
