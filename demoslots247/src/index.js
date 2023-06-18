@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from './components/ThemeContext';
-
+import { BrowserRouter } from 'react-router-dom';
+import M from 'materialize-css'
+import 'materialize-css/dist/css/materialize.min.css'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
    <ThemeProvider>
-   <App />
+  <BrowserRouter>
+  <App />
+  </BrowserRouter>
    </ThemeProvider>
   </React.StrictMode>
 );
